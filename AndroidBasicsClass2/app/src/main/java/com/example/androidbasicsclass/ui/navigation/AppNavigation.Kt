@@ -1,23 +1,26 @@
-package com.example.androidbasicsclass.ui.theme.navigation
+package com.example.androidbasicsclass.ui.navigation
 
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.PhoneAndroid
 import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Smartphone
 import androidx.compose.material.icons.outlined.PhoneAndroid
+import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.internal.ComposableFunction1
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 
 sealed class AppRoute(val route: String, val label: String, val icon: ImageVector) {
-    object ThirdPartialIDS2 : AppRoute("third_partial_ids2", "IDS2 P3", Icons.Filled.School)
-    object FirstPartialPDM1 : AppRoute("first_partial_pdm1", "PDM1 P1", Icons.Filled.PhoneAndroid)
-    object SecondPartialPDM1 : AppRoute("second_partial_pdm1", "PDM1 P2", Icons.Outlined.PhoneAndroid)
-    object ThirdPartialPDM1 : AppRoute("third_partial_pdm1", "PDM1 P3", Icons.Filled.Smartphone)
-    object PersonalInformation : AppRoute("personal_information", "About Me", Icons.Filled.Person)
+    object ThirdPartialIDS2 : com.example.androidbasicsclass.ui.navigation.AppNavigation.AppRoute("third_partial_ids2", "IDS2 P3", Icons.Filled.School)
+    object FirstPartialPDM1 : com.example.androidbasicsclass.ui.navigation.AppNavigation.AppRoute("first_partial_pdm1", "PDM1 P1", Icons.Filled.PhoneAndroid)
+    object SecondPartialPDM1 : com.example.androidbasicsclass.ui.navigation.AppNavigation.AppRoute("second_partial_pdm1", "PDM1 P2", Icons.Outlined.PhoneAndroid)
+    object ThirdPartialPDM1 : com.example.androidbasicsclass.ui.navigation.AppNavigation.AppRoute("third_partial_pdm1", "PDM1 P3", Icons.Filled.Smartphone)
+    object PersonalInformation : com.example.androidbasicsclass.ui.navigation.AppNavigation.AppRoute("personal_information", "About Me", Icons.Filled.Person)
 }
 
 /** Ordered list of all tabs shown in the bottom bar. */
@@ -58,7 +61,7 @@ fun AppNavigation() {
                         label = { Text(tab.label, fontSize = 10.sp) }
                     )
                 }
-            }
+            } as @Composable ComposableFunction1<RowScope, Unit> as @Composable ComposableFunction1<RowScope, Unit>
         }
     ) { innerPadding ->
         NavHost(
@@ -73,6 +76,11 @@ fun AppNavigation() {
             composable(AppRoute.PersonalInformation.route) { HomePersonalInformationView() }
         }
     }
+}
+
+@Composable
+fun NavigationBarItem(selected: Boolean, onClick: () -> Unit, icon: () -> Icon, label: () -> Text) {
+    TODO("Not yet implemented")
 }
 
 fun Scaffold(bottomBar: Any, content: Any) {}
