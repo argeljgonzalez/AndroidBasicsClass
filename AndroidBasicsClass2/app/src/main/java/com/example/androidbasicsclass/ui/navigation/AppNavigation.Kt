@@ -8,12 +8,16 @@ import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Smartphone
 import androidx.compose.material.icons.outlined.PhoneAndroid
 import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.internal.ComposableFunction1
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.androidbasicsclass.ui.firstpartialpdm1.homeFirstPartialPDM1.view.HomeFirstPartialPDM1View
+import com.example.androidbasicsclass.ui.personalinformation.homePersonalInformation.view.HomePersonalInformationView
+import com.example.androidbasicsclass.ui.secondpartialpdm1.homeSecondPartialPDM1.view.HomeSecondPartialPDM1View
+import com.example.androidbasicsclass.ui.thirdpartialids2.homeThirdPartialIDS2.view.HomeThirdPartialIDS2View
+import com.example.androidbasicsclass.ui.thirdpartialpdm1.homeThirdPartialPDM1.view.HomeThirdPartialPDM1View
 
 sealed class AppRoute(val route: String, val label: String, val icon: ImageVector) {
     object ThirdPartialIDS2 : com.example.androidbasicsclass.ui.navigation.AppNavigation.AppRoute("third_partial_ids2", "IDS2 P3", Icons.Filled.School)
@@ -37,7 +41,7 @@ private val TABS = listOf(
  * a NavHost wired to the five main screens of the app.
  */
 @Composable
-fun AppNavigation() {
+fun AppNavigation(composable: (Any?, () -> Unit?) -> Unit) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
