@@ -14,12 +14,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.androidbasicsclass.ui.firstpartialpdm1.homeFirstPartialPDM1.view.HomeFirstPartialPDM1View
 import com.example.androidbasicsclass.ui.personalinformation.homePersonalInformation.view.HomePersonalInformationView
 import com.example.androidbasicsclass.ui.secondpartialpdm1.homeSecondPartialPDM1.view.HomeSecondPartialPDM1View
 import com.example.androidbasicsclass.ui.thirdpartialids2.homeThirdPartialIDS2.view.HomeThirdPartialIDS2View
@@ -31,6 +33,8 @@ sealed class AppRoute(val route: String, val label: String, val icon: ImageVecto
     object SecondPartialPDM1 : AppRoute("second_partial_pdm1", "PDM1 P2", Icons.Outlined.PhoneAndroid)
     object ThirdPartialPDM1 : AppRoute("third_partial_pdm1", "PDM1 P3", Icons.Filled.Smartphone)
     object PersonalInformation : AppRoute("personal_information", "About Me", Icons.Filled.Person)
+}
+
 private val TABS = listOf(
     AppRoute.ThirdPartialIDS2,
     AppRoute.FirstPartialPDM1,
@@ -38,6 +42,7 @@ private val TABS = listOf(
     AppRoute.ThirdPartialPDM1,
     AppRoute.PersonalInformation
 )
+
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
@@ -69,7 +74,7 @@ fun AppNavigation() {
         NavHost(
             navController = navController,
             startDestination = AppRoute.ThirdPartialIDS2.route,
-            modifier = padding(innerPadding)
+            modifier = Modifier.padding(innerPadding)
         ) {
             composable(AppRoute.ThirdPartialIDS2.route) { HomeThirdPartialIDS2View() }
             composable(AppRoute.FirstPartialPDM1.route) { HomeFirstPartialPDM1View() }
@@ -78,11 +83,4 @@ fun AppNavigation() {
             composable(AppRoute.PersonalInformation.route) { HomePersonalInformationView() }
         }
     }
-}
-
-
-
-@Composable
-fun HomeFirstPartialPDM1View() {
-    Text("Hola Mundo")
 }
