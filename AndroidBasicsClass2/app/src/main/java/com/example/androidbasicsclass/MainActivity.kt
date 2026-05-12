@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AndroidBasicsClassTheme {
-                AppNavigation()
+                com.example.androidbasicsclass.ui.navigation.AppNavigation()
             }
         }
     }
