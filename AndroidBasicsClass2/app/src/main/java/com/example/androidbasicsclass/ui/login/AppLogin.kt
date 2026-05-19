@@ -34,6 +34,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import com.example.androidbasicsclass.ui.navigation.AppNavigation
+import android.util.Log
 
 @Composable
 fun LoginView() {
@@ -96,7 +98,9 @@ fun LoginView() {
 
         // Botón de inicio de sesión
         Button(
-            onClick = { /* Lógica de autenticación */ },
+            onClick = {
+                Log.d("Argel", "Hola")
+            },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(stringResource(R.string.login_button))
