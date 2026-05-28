@@ -34,11 +34,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import com.example.androidbasicsclass.ui.navigation.AppNavigation
-import android.util.Log
 
 @Composable
-fun LoginView() {
+fun LoginView(onLoginClick: () -> Unit) {
     // Variables de estado
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -99,7 +97,7 @@ fun LoginView() {
         // Botón de inicio de sesión
         Button(
             onClick = {
-                Log.d("Argel", "Hola")
+                onLoginClick()
             },
             modifier = Modifier.fillMaxWidth()
         ) {
