@@ -24,6 +24,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.androidbasicsclass.ui.firstpartialpdm1.homeFirstPartialPDM1.view.HomeFirstPartialPDM1View
 import com.example.androidbasicsclass.ui.personalinformation.homePersonalInformation.view.HomePersonalInformationView
 import com.example.androidbasicsclass.ui.secondpartialpdm1.homeSecondPartialPDM1.view.HomeSecondPartialPDM1View
+import com.example.androidbasicsclass.ui.thirdpartialids2.firstApiRequest.view.FirstApiRequestView
 import com.example.androidbasicsclass.ui.thirdpartialids2.homeThirdPartialIDS2.view.HomeThirdPartialIDS2View
 import com.example.androidbasicsclass.ui.thirdpartialpdm1.homeThirdPartialPDM1.view.HomeThirdPartialPDM1View
 
@@ -34,6 +35,8 @@ sealed class AppRoute(val route: String, val label: String, val icon: ImageVecto
     object ThirdPartialPDM1 : AppRoute("third_partial_pdm1", "PDM1 P3", Icons.Filled.Smartphone)
     object PersonalInformation : AppRoute("personal_information", "About Me", Icons.Filled.Person)
 }
+
+private const val FIRST_API_REQUEST_ROUTE = "first_api_request"
 
 private val TABS = listOf(
     AppRoute.ThirdPartialIDS2,
@@ -76,11 +79,37 @@ fun AppNavigation() {
             startDestination = AppRoute.ThirdPartialIDS2.route,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(AppRoute.ThirdPartialIDS2.route) { HomeThirdPartialIDS2View() }
-            composable(AppRoute.FirstPartialPDM1.route) { HomeFirstPartialPDM1View() }
-            composable(AppRoute.SecondPartialPDM1.route) { HomeSecondPartialPDM1View() }
-            composable(AppRoute.ThirdPartialPDM1.route) { HomeThirdPartialPDM1View() }
-            composable(AppRoute.PersonalInformation.route) { HomePersonalInformationView() }
+            composable(AppRoute.ThirdPartialIDS2.route) {
+                HomeThirdPartialIDS2View(
+                    onNavigateToFirstApiRequest = {
+                        navController.navigate(FIRST_API_REQUEST_ROUTE)
+                    }
+                )
+            }
+
+            composable(FIRST_API_REQUEST_ROUTE) {
+                FirstApiRequestView(
+                    onBack = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+
+            composable(AppRoute.FirstPartialPDM1.route) {
+                HomeFirstPartialPDM1View()
+            }
+
+            composable(AppRoute.SecondPartialPDM1.route) {
+                HomeSecondPartialPDM1View()
+            }
+
+            composable(AppRoute.ThirdPartialPDM1.route) {
+                HomeThirdPartialPDM1View()
+            }
+
+            composable(AppRoute.PersonalInformation.route) {
+                HomePersonalInformationView()
+            }
         }
     }
 }

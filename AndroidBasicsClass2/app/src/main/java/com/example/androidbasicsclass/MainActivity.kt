@@ -8,7 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.example.androidbasicsclass.ui.login.LoginView
+import com.example.androidbasicsclass.ui.login.LoginScreenView
 import com.example.androidbasicsclass.ui.navigation.AppNavigation
 import com.example.androidbasicsclass.ui.theme.AndroidBasicsClassTheme
 
@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
                 if (showApp) {
                     AppNavigation()
                 } else {
-                    LoginView(
+                    LoginScreenView(
                         onLoginClick = {
                             showApp = true
                         }

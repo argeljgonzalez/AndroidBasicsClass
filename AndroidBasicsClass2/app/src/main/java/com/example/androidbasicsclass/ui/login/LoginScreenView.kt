@@ -36,7 +36,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun LoginView(onLoginClick: () -> Unit) {
+fun LoginScreenView(onLoginClick: () -> Unit) {
     // Variables de estado
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
